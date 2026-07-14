@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brillo de Mujer | Cosméticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .cart-drawer {
+            transition: transform 0.3s ease-in-out;
+        }
+        .bg-rose-soft { background-color: #fff0f5; }
+        .text-rose-brand { color: #d63384; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-rose-brand">Brillo de Mujer</h1>
+            <button id="openCart" class="relative bg-rose-500 text-white p-2 rounded-full shadow-lg">
+                🛒 <span id="cartCount" class="absolute -top-1 -right-1 bg-red-600 text-xs w-5 h-5 flex items-center justify-center rounded-full text-white font-bold">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-semibold mb-8 text-center text-gray-700">Catálogo de Belleza</h2>
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Los productos se cargarán dinámicamente -->
+        </div>
+    </main>
+
+    <div id="cartDrawer" class="cart-drawer fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 p-6 translate-x-full overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold">Tu Pedido</h3>
+            <button id="closeCart" class="text-2xl font-bold">&times;</button>
+        </div>
+        <div id="cartItems" class="space-y-4 mb-6"></div>
+        <div class="border-t pt-4">
+            <p class="text-lg font-bold mb-4">Total: <span id="cartTotal">0</span> Bs</p>
+            <button id="checkoutBtn" class="w-full bg-green-500 text-white py-3 rounded-lg font-bold hover:bg-green-600">
+                Finalizar Pedido por WhatsApp 📲
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/59163494328" target="_blank" class="fixed bottom-6 right-6 z-30 bg-green-500 p-4 rounded-full shadow-lg flex items-center gap-2 hover:bg-green-600 transition-all">
+        <span class="text-white font-bold hidden sm:block">¡Estoy Online!</span>
+        <span class="text-2xl">💬</span>
+    </a>
+
+    <script>
+        const products = [
+            { id: 1, name: "Labial Mate", price: 10 },
+            { id: 2, name: "Base de Maquillaje", price: 45 },
+            { id: 3, name: "Máscara de Pestañas", price: 25 },
+            { id: 4, name: "Paleta de Sombras", price: 60 },
+            { id: 5, name: "Rubor en Polvo", price: 30 },
+            { id: 6, name: "Delineador Líquido", price: 20 }
+        ];
+
+        let cart = [];
+
+        const productGrid = document.getElementById('productGrid');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.getElementById('cartCount');
+        const cartDrawer = document.getElementById('cartDrawer');
+
+        function renderProducts() {
+            productGrid.innerHTML = products.map(p => `
+                <div class="bg-white p-6 rounded-2xl shadow-md border hover:shadow-lg transition-shadow text-center">
+                    <h3 class="text-xl font-bold text-gray-800">${p.name}</h3>
+                    <p class="text-2xl font-bold text-rose-brand my-4">${p.price} Bs</p>
+                    <button onclick="addToCart(${p.id})" class="w-full bg-rose-500 text-white py-2 rounded-lg hover:bg-rose-600">Agregar al Carrito</button>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push({ ...product, qty: 1 });
+            updateCart();
+            cartDrawer.classList.remove('translate-x-full');
+        }
+
+        function updateCart() {
+            cartItems.innerHTML = cart.map((p, index) => `
+                <div class="flex justify-between items-center border-b pb-2">
+                    <span>${p.name}</span>
+                    <span>${p.price} Bs</span>
+                    <button onclick="removeFromCart(${index})" class="text-red-500 font-bold">X</button>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, p) => sum + p.price, 0);
+            cartTotal.innerText = total;
+            cartCount.innerText = cart.length;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        document.getElementById('openCart').onclick = () => cartDrawer.classList.remove('translate-x-full');
+        document.getElementById('closeCart').onclick = () => cartDrawer.classList.add('translate-x-full');
+
+        document.getElementById('checkoutBtn').onclick = () => {
+            if(cart.length === 0) return;
+            let message = "Hola, me gustaría realizar un pedido de Brillo de Mujer:%0A%0A";
+            cart.forEach(p => { message += `- ${p.name}: ${p.price} Bs%0A`; });
+            message += `%0ATotal: ${cartTotal.innerText} Bs`;
+            window.open(`https://wa.me/59163494328?text=${message}`, '_blank');
+        };
+
+        renderProducts();
+    </script>
+</body>
+</html>
