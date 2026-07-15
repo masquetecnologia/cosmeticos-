@@ -3,61 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brillo de Mujer | Cosméticos</title>
+    <title>Brillo de Mujer | Cosméticos de Alta Calidad</title>
+    <!-- Google Fonts elegant import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        poppins: ['"Poppins"', 'sans-serif'],
+                    },
+                    colors: {
+                        roseBrand: {
+                            50: '#fff0f5',
+                            100: '#ffe1ec',
+                            200: '#fbcfe8',
+                            300: '#fca5c7',
+                            400: '#f472b6',
+                            500: '#d63384',
+                            600: '#b8256e',
+                            700: '#9d1d5b',
+                            800: '#8c1651',
+                            900: '#700f3f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .cart-drawer {
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .bg-rose-soft { background-color: #fff0f5; }
-        .text-rose-brand { color: #d63384; }
+        .font-playfair {
+            font-family: "Playfair Display", serif;
+        }
+        .font-poppins {
+            font-family: "Poppins", sans-serif;
+        }
+        /* Custom scrollbar for chatbot and drawer */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fca5c7;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d63384;
+        }
+        /* Chatbot keyframe animations */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+        .pulse-effect {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-800">
+<body class="bg-gray-50 font-poppins text-gray-800 selection:bg-roseBrand-100 selection:text-roseBrand-800">
 
-    <header class="bg-white shadow-sm sticky top-0 z-40">
+    <!-- Header Navigation -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-roseBrand-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-rose-brand">Brillo de Mujer</h1>
-            <button id="openCart" class="relative bg-rose-500 text-white p-2 rounded-full shadow-lg">
-                🛒 <span id="cartCount" class="absolute -top-1 -right-1 bg-red-600 text-xs w-5 h-5 flex items-center justify-center rounded-full text-white font-bold">0</span>
-            </button>
+            <div class="flex items-center gap-2">
+                <span class="text-3xl">✨</span>
+                <div>
+                    <h1 class="text-2xl font-black font-playfair tracking-wide text-roseBrand-600">Brillo de Mujer</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Cosméticos & Cuidado</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Search/Slogan decoration hidden on small screens -->
+                <span class="text-xs text-gray-400 italic hidden md:inline-block font-playfair">"Donde tu luz interior encuentra su reflejo exterior"</span>
+
+                <button id="openCart" class="relative bg-roseBrand-500 hover:bg-roseBrand-600 text-white p-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+                    <span class="text-xl">🛒</span>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-roseBrand-800 text-xs w-5 h-5 flex items-center justify-center rounded-full text-white font-black border-2 border-white">0</span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
-        <h2 class="text-3xl font-semibold mb-8 text-center text-gray-700">Catálogo de Belleza</h2>
+    <!-- Hero / Catalog Intro Section -->
+    <section class="relative bg-gradient-to-b from-roseBrand-50 via-roseBrand-50/50 to-transparent py-16 px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <div class="absolute -top-12 -left-12 w-64 h-64 bg-roseBrand-100 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-12 right-12 w-72 h-72 bg-roseBrand-200 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto max-w-4xl text-center relative z-10">
+            <span class="text-xs font-bold tracking-widest text-roseBrand-600 uppercase bg-roseBrand-100 px-3 py-1 rounded-full">Exclusividad & Estilo</span>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black font-playfair text-gray-900 mt-4 leading-tight">
+                Realza Tu Belleza <span class="text-roseBrand-600 italic">Natural</span>
+            </h2>
+            <p class="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mt-4 font-light leading-relaxed">
+                Nuestra colección premium de maquillaje está especialmente seleccionada para destacar tu elegancia, brindándote frescura, durabilidad y ese brillo radiante único que te caracteriza.
+            </p>
+            <div class="flex justify-center gap-3 mt-8">
+                <span class="h-1 w-12 bg-roseBrand-300 rounded-full"></span>
+                <span class="h-1 w-3 bg-roseBrand-500 rounded-full"></span>
+                <span class="h-1 w-12 bg-roseBrand-300 rounded-full"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Catalog Section -->
+    <main class="container mx-auto px-6 pb-24">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 border-b border-gray-100 pb-6 gap-4">
+            <div>
+                <h3 class="text-2xl font-bold font-playfair text-gray-800">Catálogo de Alta Belleza</h3>
+                <p class="text-sm text-gray-500">Selecciona los productos de tu preferencia y agrégalos al carrito</p>
+            </div>
+
+            <!-- Category badges dynamic selector wrapper -->
+            <div class="flex flex-wrap gap-2 text-xs">
+                <button class="px-4 py-2 rounded-full bg-roseBrand-500 text-white font-semibold shadow-sm">Todos los Cosméticos</button>
+                <span class="px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-colors cursor-pointer">Rostro</span>
+                <span class="px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-colors cursor-pointer">Ojos</span>
+                <span class="px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-colors cursor-pointer">Labios</span>
+            </div>
+        </div>
+
         <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Los productos se cargarán dinámicamente -->
         </div>
     </main>
 
-    <div id="cartDrawer" class="cart-drawer fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 p-6 translate-x-full overflow-y-auto">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-bold">Tu Pedido</h3>
-            <button id="closeCart" class="text-2xl font-bold">&times;</button>
+    <!-- Shopping Cart Drawer (Derecha) -->
+    <div id="cartDrawer" class="cart-drawer fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 p-6 translate-x-full overflow-y-auto flex flex-col justify-between border-l border-roseBrand-100">
+        <div>
+            <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-100">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🛍️</span>
+                    <h3 class="text-xl font-bold font-playfair text-gray-800">Tu Pedido</h3>
+                </div>
+                <button id="closeCart" class="text-3xl text-gray-400 hover:text-roseBrand-500 transition-colors">&times;</button>
+            </div>
+
+            <!-- List of Cart Items -->
+            <div id="cartItems" class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+                <!-- Se llena dinámicamente -->
+            </div>
         </div>
-        <div id="cartItems" class="space-y-4 mb-6"></div>
-        <div class="border-t pt-4">
-            <p class="text-lg font-bold mb-4">Total: <span id="cartTotal">0</span> Bs</p>
-            <button id="checkoutBtn" class="w-full bg-green-500 text-white py-3 rounded-lg font-bold hover:bg-green-600">
-                Finalizar Pedido por WhatsApp 📲
+
+        <div class="border-t border-gray-100 pt-6 mt-6">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-500 font-medium">Subtotal</span>
+                <span class="text-lg font-bold text-gray-800"><span id="cartSubtotal">0</span> Bs</span>
+            </div>
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-gray-500 font-medium">Envío</span>
+                <span class="text-sm font-semibold text-green-600 bg-green-50 px-2.5 py-0.5 rounded-full">¡A coordinar!</span>
+            </div>
+            <div class="flex justify-between items-center mb-6 pt-3 border-t border-dashed border-gray-200">
+                <span class="text-lg font-bold text-gray-800">Total general</span>
+                <span class="text-2xl font-black text-roseBrand-600 font-playfair"><span id="cartTotal">0</span> Bs</span>
+            </div>
+
+            <button id="checkoutBtn" class="w-full bg-green-500 hover:bg-green-600 text-white py-3.5 rounded-xl font-bold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
+                <span class="text-lg">📲</span> Finalizar Pedido por WhatsApp
             </button>
+            <p class="text-[11px] text-gray-400 text-center mt-3">Te redirigiremos a WhatsApp para ultimar detalles y concretar la entrega.</p>
         </div>
     </div>
 
-    <a href="https://wa.me/59163494328" target="_blank" class="fixed bottom-6 right-6 z-30 bg-green-500 p-4 rounded-full shadow-lg flex items-center gap-2 hover:bg-green-600 transition-all">
-        <span class="text-white font-bold hidden sm:block">¡Estoy Online!</span>
-        <span class="text-2xl">💬</span>
-    </a>
+    <!-- Floating Chatbot Toggle & Window (Sofia Chatbot) -->
+    <div id="chatbotWrapper" class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+
+        <!-- Chatbot Window Container (Hidden by default) -->
+        <div id="chatbotWindow" class="hidden w-[92vw] sm:w-[400px] h-[550px] bg-white rounded-2xl shadow-2xl border border-roseBrand-100 overflow-hidden flex flex-col mb-4 transition-all duration-300 transform scale-95 opacity-0 origin-bottom-right">
+
+            <!-- Chatbot Header -->
+            <div class="bg-gradient-to-r from-roseBrand-600 to-roseBrand-500 text-white px-4 py-4 flex items-center justify-between shadow-md">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center border border-white/30 overflow-hidden">
+                            <!-- High quality chatbot avatar placeholder -->
+                            <span class="text-2xl">👩‍💼</span>
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-roseBrand-600 rounded-full"></span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-playfair leading-tight text-sm">Sofía | Brillo de Mujer</h4>
+                        <p class="text-[11px] text-roseBrand-100">Asesora de Belleza Personal ✨</p>
+                    </div>
+                </div>
+                <button id="closeChatbot" class="text-white/80 hover:text-white text-2xl font-bold transition-colors">&times;</button>
+            </div>
+
+            <!-- Chatbot Messages Area -->
+            <div id="chatbotMessages" class="flex-1 p-4 overflow-y-auto bg-roseBrand-50/30 space-y-4">
+                <!-- Initial Welcome Message from Sofia -->
+                <div class="flex items-start gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-roseBrand-100 flex items-center justify-center text-sm flex-shrink-0">
+                        👩‍💼
+                    </div>
+                    <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-roseBrand-100 max-w-[85%]">
+                        <p class="text-xs text-gray-800 leading-relaxed">
+                            ¡Hola, hermosa! 💕 Soy <strong>Sofía</strong>, tu asistente de belleza. Me alegra mucho saludarte.
+                        </p>
+                        <p class="text-xs text-gray-800 leading-relaxed mt-1.5">
+                            ¿Cómo puedo ayudarte a brillar hoy? Selecciona una de mis opciones rápidas o escríbeme lo que estás buscando.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sofia's Quick Options List -->
+                <div class="ml-10 space-y-2" id="quickOptionsContainer">
+                    <button onclick="handleQuickOption('recomendaciones')" class="block w-full text-left text-xs bg-white hover:bg-roseBrand-50 text-roseBrand-600 border border-roseBrand-200 hover:border-roseBrand-400 px-4 py-2.5 rounded-xl font-medium transition-all duration-200 shadow-sm">
+                        💄 Recomendarme un producto
+                    </button>
+                    <button onclick="handleQuickOption('precios')" class="block w-full text-left text-xs bg-white hover:bg-roseBrand-50 text-roseBrand-600 border border-roseBrand-200 hover:border-roseBrand-400 px-4 py-2.5 rounded-xl font-medium transition-all duration-200 shadow-sm">
+                        💰 Consultar precios del catálogo
+                    </button>
+                    <button onclick="handleQuickOption('consejos')" class="block w-full text-left text-xs bg-white hover:bg-roseBrand-50 text-roseBrand-600 border border-roseBrand-200 hover:border-roseBrand-400 px-4 py-2.5 rounded-xl font-medium transition-all duration-200 shadow-sm">
+                        💡 Consejos de Maquillaje
+                    </button>
+                    <button onclick="handleQuickOption('contacto')" class="block w-full text-left text-xs bg-white hover:bg-roseBrand-50 text-roseBrand-600 border border-roseBrand-200 hover:border-roseBrand-400 px-4 py-2.5 rounded-xl font-medium transition-all duration-200 shadow-sm">
+                        📲 WhatsApp / Contacto Humano
+                    </button>
+                </div>
+            </div>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div id="typingIndicator" class="hidden px-6 py-2 bg-roseBrand-50/30 flex items-center gap-2">
+                <div class="flex items-center space-x-1 bg-white border border-roseBrand-100 rounded-full px-3 py-1.5 shadow-sm">
+                    <span class="text-[10px] text-gray-400 font-medium">Sofía está escribiendo</span>
+                    <span class="w-1.5 h-1.5 bg-roseBrand-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+                    <span class="w-1.5 h-1.5 bg-roseBrand-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                    <span class="w-1.5 h-1.5 bg-roseBrand-600 rounded-full animate-bounce" style="animation-delay: 0.3s"></span>
+                </div>
+            </div>
+
+            <!-- Chatbot Input Form -->
+            <form id="chatbotForm" class="p-3 border-t border-roseBrand-100 bg-white flex gap-2 items-center">
+                <input type="text" id="chatbotInput" autocomplete="off" placeholder="Pregúntame sobre bases, labiales, precios..." class="flex-1 text-xs border border-gray-200 focus:border-roseBrand-400 focus:ring-1 focus:ring-roseBrand-400 rounded-xl px-4 py-3 outline-none transition-all">
+                <button type="submit" class="bg-roseBrand-500 hover:bg-roseBrand-600 text-white p-2.5 rounded-xl transition-all shadow-md flex items-center justify-center">
+                    <!-- Send paper plane icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <!-- Floating Chatbot Action Button (Triggers Chatbot) -->
+        <button id="toggleChatbot" class="relative group bg-gradient-to-r from-roseBrand-600 to-roseBrand-500 hover:from-roseBrand-500 hover:to-roseBrand-600 text-white px-5 py-4 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 transform hover:scale-105 active:scale-95">
+            <!-- Pulsing ring effect -->
+            <span class="absolute inset-0 rounded-full bg-roseBrand-400/40 pulse-effect -z-10"></span>
+
+            <span class="text-2xl">💬</span>
+            <span class="text-sm font-semibold tracking-wide hidden sm:inline-block">¿Necesitas ayuda? Chatea con Sofía</span>
+
+            <!-- Small bounce badge -->
+            <span class="absolute -top-1 -left-1 bg-red-500 text-[10px] text-white px-1.5 py-0.5 rounded-full font-bold shadow animate-bounce">1</span>
+        </button>
+
+    </div>
+
+    <!-- Elegant Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-6 border-t border-gray-800">
+        <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-3">
+                <h4 class="text-lg font-bold font-playfair text-white">Brillo de Mujer</h4>
+                <p class="text-xs leading-relaxed text-gray-400">
+                    Tu tienda de confianza para encontrar los cosméticos ideales que resalten tu autenticidad y elegancia. Brindamos asesoramiento personalizado y envíos rápidos.
+                </p>
+                <p class="text-xs text-roseBrand-400 font-semibold">📍 Bolivia</p>
+            </div>
+            <div class="space-y-2">
+                <h4 class="text-lg font-bold font-playfair text-white text-left">Enlaces Rápidos</h4>
+                <ul class="text-xs space-y-2">
+                    <li><a href="#" class="hover:text-roseBrand-300 transition-colors">Inicio</a></li>
+                    <li><a href="#productGrid" class="hover:text-roseBrand-300 transition-colors">Nuestro Catálogo</a></li>
+                    <li><a href="javascript:void(0)" onclick="toggleChatbotWindow()" class="hover:text-roseBrand-300 transition-colors">Asistente Virtual (Sofía)</a></li>
+                    <li><a href="https://wa.me/59163494328" target="_blank" class="hover:text-roseBrand-300 transition-colors">Contacto de WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="space-y-3">
+                <h4 class="text-lg font-bold font-playfair text-white">Horarios de Atención</h4>
+                <p class="text-xs text-gray-400">Lunes a Sábado: 09:00 AM - 08:00 PM</p>
+                <p class="text-xs text-gray-400">Atención Online: ¡24/7 con nuestro Chatbot Sofía!</p>
+                <div class="pt-2">
+                    <span class="inline-block text-xs font-semibold bg-roseBrand-900/50 text-roseBrand-200 border border-roseBrand-800 px-3 py-1.5 rounded-lg">
+                        ✨ Compra segura & Atención 100% confiable
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto max-w-6xl mt-10 pt-6 border-t border-gray-800 text-center text-xs">
+            <p>&copy; 2024 Brillo de Mujer. Todos los derechos reservados. Diseñado con amor y delicadeza.</p>
+        </div>
+    </footer>
+
 
     <script>
+        // High quality products list with categories, descriptions and badges
         const products = [
-            { id: 1, name: "Bálsamo Labial", price: 10, image: "images/balzamo.jpg" },
-            { id: 2, name: "Base de Maquillaje", price: 45, image: "images/base.jpg" },
-            { id: 3, name: "Máscara de Pestañas", price: 25, image: "images/lash.jpg" },
-            { id: 4, name: "Paleta de Sombras", price: 60, image: "images/cosmetico.jpg" },
-            { id: 5, name: "Esponja de Maquillaje", price: 30, image: "images/esponja.jpg" },
-            { id: 6, name: "Delineador Líquido", price: 20, image: "images/cosmeti.jpg" }
+            {
+                id: 1,
+                name: "Bálsamo Labial",
+                price: 10,
+                image: "images/balzamo.jpg",
+                category: "Labios",
+                badge: "Básico ✨",
+                desc: "Hidratación profunda con un toque de brillo natural y aroma frutal para unos labios irresistibles todo el día."
+            },
+            {
+                id: 2,
+                name: "Base de Maquillaje",
+                price: 45,
+                image: "images/base.jpg",
+                category: "Rostro",
+                badge: "Más Vendido 🔥",
+                desc: "Fórmula ligera de alta cobertura con acabado mate sedoso. Se adapta perfectamente a tu tono de piel."
+            },
+            {
+                id: 3,
+                name: "Máscara de Pestañas",
+                price: 25,
+                image: "images/lash.jpg",
+                category: "Ojos",
+                badge: "Mirada Impactante 💕",
+                desc: "Volumen extremo y definición de impacto. Resistente al agua para una mirada cautivadora y duradera."
+            },
+            {
+                id: 4,
+                name: "Paleta de Sombras",
+                price: 60,
+                image: "images/cosmetico.jpg",
+                category: "Ojos",
+                badge: "Tendencia 🌟",
+                desc: "Colección exclusiva de 12 tonos altamente pigmentados, desde mates aterciopelados hasta shimmers radiantes."
+            },
+            {
+                id: 5,
+                name: "Esponja de Maquillaje",
+                price: 30,
+                image: "images/esponja.jpg",
+                category: "Accesorios",
+                badge: "Calidad Premium ⭐",
+                desc: "Textura ultrasuave libre de látex. Difumina bases y correctores a la perfección para un acabado profesional."
+            },
+            {
+                id: 6,
+                name: "Delineador Líquido",
+                price: 20,
+                image: "images/cosmeti.jpg",
+                category: "Ojos",
+                badge: "Favorito 😍",
+                desc: "Trazo ultra preciso y color negro ultra mate de secado rápido. Punta fina ideal para el delineado perfecto."
+            }
         ];
 
         let cart = [];
@@ -65,43 +372,71 @@
         const productGrid = document.getElementById('productGrid');
         const cartItems = document.getElementById('cartItems');
         const cartTotal = document.getElementById('cartTotal');
+        const cartSubtotal = document.getElementById('cartSubtotal');
         const cartCount = document.getElementById('cartCount');
         const cartDrawer = document.getElementById('cartDrawer');
 
+        // Dynamic product catalog rendering with upgraded design & letters
         function renderProducts() {
             productGrid.innerHTML = products.map(p => `
-                <div class="bg-white p-6 rounded-2xl shadow-md border hover:shadow-lg transition-shadow text-center flex flex-col justify-between">
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 hover:border-roseBrand-200 transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1 relative">
+
+                    <!-- Floating Badge -->
+                    <span class="absolute top-4 left-4 z-10 bg-white/95 text-roseBrand-600 text-[11px] font-bold px-3 py-1 rounded-full shadow-sm border border-roseBrand-100">
+                        ${p.badge}
+                    </span>
+
                     <div>
-                        <div class="w-full aspect-square mb-4 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
-                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                        <!-- Elegant Image container with hover zoom -->
+                        <div class="w-full aspect-[4/3] bg-gray-50 flex items-center justify-center overflow-hidden border-b border-gray-50">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">${p.name}</h3>
-                        <p class="text-2xl font-bold text-rose-brand my-4">${p.price} Bs</p>
+
+                        <!-- Details -->
+                        <div class="p-6">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-roseBrand-400 block mb-1">${p.category}</span>
+                            <h3 class="text-xl font-bold font-playfair text-gray-900 group-hover:text-roseBrand-600 transition-colors">${p.name}</h3>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed line-clamp-2 h-10">${p.desc}</p>
+
+                            <!-- Price & Currency styled nicely -->
+                            <div class="flex items-baseline gap-1 mt-4">
+                                <span class="text-2xl font-black text-roseBrand-600 font-playfair">${p.price}</span>
+                                <span class="text-sm font-bold text-gray-500">Bs</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="addToCart(${p.id})" class="w-full bg-rose-500 text-white py-2 rounded-lg hover:bg-rose-600 mt-auto">Agregar al Carrito</button>
+
+                    <!-- Elegant CTA Button -->
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="addToCart(${p.id})" class="w-full bg-roseBrand-500 hover:bg-roseBrand-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-roseBrand-200 flex items-center justify-center gap-2 transform active:scale-[0.98]">
+                            <span>🛒</span> Agregar al Carrito
+                        </button>
+                    </div>
                 </div>
             `).join('');
         }
 
         function addToCart(id) {
             const product = products.find(p => p.id === id);
-            cart.push({ ...product, qty: 1 });
+
+            // Check if product already exists in cart to increment qty
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
             updateCart();
-            cartDrawer.classList.remove('translate-x-full');
+            openCartDrawer();
         }
 
-        function updateCart() {
-            cartItems.innerHTML = cart.map((p, index) => `
-                <div class="flex justify-between items-center border-b pb-2">
-                    <span>${p.name}</span>
-                    <span>${p.price} Bs</span>
-                    <button onclick="removeFromCart(${index})" class="text-red-500 font-bold">X</button>
-                </div>
-            `).join('');
-            
-            const total = cart.reduce((sum, p) => sum + p.price, 0);
-            cartTotal.innerText = total;
-            cartCount.innerText = cart.length;
+        function changeQty(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
         }
 
         function removeFromCart(index) {
@@ -109,17 +444,297 @@
             updateCart();
         }
 
-        document.getElementById('openCart').onclick = () => cartDrawer.classList.remove('translate-x-full');
-        document.getElementById('closeCart').onclick = () => cartDrawer.classList.add('translate-x-full');
+        function openCartDrawer() {
+            cartDrawer.classList.remove('translate-x-full');
+        }
+
+        function closeCartDrawer() {
+            cartDrawer.classList.add('translate-x-full');
+        }
+
+        function updateCart() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="text-center py-12 flex flex-col items-center justify-center text-gray-400">
+                        <span class="text-5xl mb-3">🛍️</span>
+                        <p class="text-sm font-medium">Tu carrito está esperando por ti</p>
+                        <p class="text-[11px] text-gray-400 mt-1">Explora nuestros productos y dales un toque de brillo</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map((p, index) => `
+                    <div class="flex items-center gap-4 bg-gray-50 p-3 rounded-2xl border border-gray-100">
+                        <div class="w-16 h-16 rounded-xl overflow-hidden bg-white flex-shrink-0 border border-gray-100 flex items-center justify-center">
+                            <img src="${p.image}" class="w-full h-full object-cover" alt="${p.name}">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-bold text-gray-800 truncate">${p.name}</h4>
+                            <p class="text-xs text-roseBrand-600 font-semibold mt-0.5">${p.price} Bs</p>
+
+                            <!-- Qty adjuster -->
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="changeQty(${index}, -1)" class="w-5 h-5 bg-white border rounded-full text-xs font-bold hover:bg-gray-100 transition-colors flex items-center justify-center">-</button>
+                                <span class="text-xs font-bold text-gray-700">${p.qty}</span>
+                                <button onclick="changeQty(${index}, 1)" class="w-5 h-5 bg-white border rounded-full text-xs font-bold hover:bg-gray-100 transition-colors flex items-center justify-center">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-gray-400 hover:text-red-500 transition-colors p-1" title="Eliminar">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, p) => sum + (p.price * p.qty), 0);
+            cartTotal.innerText = total;
+            cartSubtotal.innerText = total;
+
+            const count = cart.reduce((sum, p) => sum + p.qty, 0);
+            cartCount.innerText = count;
+        }
+
+        document.getElementById('openCart').onclick = openCartDrawer;
+        document.getElementById('closeCart').onclick = closeCartDrawer;
 
         document.getElementById('checkoutBtn').onclick = () => {
-            if(cart.length === 0) return;
+            if(cart.length === 0) {
+                alert("Tu pedido está vacío. ¡Elige algunos de nuestros hermosos cosméticos primero!");
+                return;
+            }
             let message = "Hola, me gustaría realizar un pedido de Brillo de Mujer:%0A%0A";
-            cart.forEach(p => { message += `- ${p.name}: ${p.price} Bs%0A`; });
-            message += `%0ATotal: ${cartTotal.innerText} Bs`;
+            cart.forEach(p => {
+                message += `👉 *${p.name}* (Cant: ${p.qty}) - Subtotal: ${p.price * p.qty} Bs%0A`;
+            });
+            const finalTotal = cart.reduce((sum, p) => sum + (p.price * p.qty), 0);
+            message += `%0A💵 *Total del Pedido:* ${finalTotal} Bs%0A%0A¡Muchas gracias! ✨`;
             window.open(`https://wa.me/59163494328?text=${message}`, '_blank');
         };
 
+
+        /* --- CHATBOT SOFÍA LOGIC --- */
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const toggleChatbot = document.getElementById('toggleChatbot');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotForm = document.getElementById('chatbotForm');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        let botOpen = false;
+
+        function toggleChatbotWindow() {
+            botOpen = !botOpen;
+            if (botOpen) {
+                chatbotWindow.classList.remove('hidden');
+                setTimeout(() => {
+                    chatbotWindow.classList.remove('opacity-0', 'scale-95');
+                    chatbotWindow.classList.add('opacity-100', 'scale-100');
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 10);
+            } else {
+                chatbotWindow.classList.remove('opacity-100', 'scale-100');
+                chatbotWindow.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    chatbotWindow.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        toggleChatbot.onclick = toggleChatbotWindow;
+        closeChatbot.onclick = toggleChatbotWindow;
+
+        function appendMessage(sender, text, isHtml = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = "flex items-start gap-2.5 " + (sender === 'user' ? 'justify-end' : '');
+
+            const avatar = sender === 'user' ? '👩' : '👩‍💼';
+            const bgClass = sender === 'user'
+                ? 'bg-roseBrand-500 text-white rounded-tr-none'
+                : 'bg-white text-gray-800 rounded-tl-none border border-roseBrand-100';
+
+            msgDiv.innerHTML = `
+                ${sender !== 'user' ? `<div class="w-8 h-8 rounded-full bg-roseBrand-100 flex items-center justify-center text-sm flex-shrink-0">${avatar}</div>` : ''}
+                <div class="${bgClass} p-3.5 rounded-2xl shadow-sm max-w-[85%]">
+                    <p class="text-xs leading-relaxed">${isHtml ? text : escapeHtml(text)}</p>
+                </div>
+                ${sender === 'user' ? `<div class="w-8 h-8 rounded-full bg-roseBrand-200 flex items-center justify-center text-sm flex-shrink-0">${avatar}</div>` : ''}
+            `;
+
+            chatbotMessages.appendChild(msgDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function showTypingAndRespond(responseFunc, delay = 1000) {
+            typingIndicator.classList.remove('hidden');
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            setTimeout(() => {
+                typingIndicator.classList.add('hidden');
+                responseFunc();
+            }, delay);
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        function handleQuickOption(option) {
+            // Log user click in chat
+            let userMsg = "";
+            switch (option) {
+                case 'recomendaciones':
+                    userMsg = "💄 Recomendarme un producto";
+                    break;
+                case 'precios':
+                    userMsg = "💰 Consultar precios del catálogo";
+                    break;
+                case 'consejos':
+                    userMsg = "💡 Consejos de Maquillaje";
+                    break;
+                case 'contacto':
+                    userMsg = "📲 WhatsApp / Contacto Humano";
+                    break;
+            }
+            appendMessage('user', userMsg);
+
+            showTypingAndRespond(() => {
+                if (option === 'recomendaciones') {
+                    appendMessage('bot', `Contamos con una exquisita selección de cosméticos. Aquí tienes los más destacados. ¡Puedes agregarlos al carrito directamente desde aquí! 👇`, true);
+
+                    // Output products cards in chat
+                    products.forEach(p => {
+                        const cardHtml = `
+                            <div class="bg-gray-50 rounded-xl border border-roseBrand-100 p-3 my-2 shadow-xs flex items-center gap-3">
+                                <img src="${p.image}" class="w-12 h-12 rounded-lg object-cover bg-white border" alt="${p.name}">
+                                <div class="flex-1 min-w-0">
+                                    <h5 class="text-[11px] font-bold text-gray-900 truncate">${p.name}</h5>
+                                    <p class="text-[10px] text-gray-500 line-clamp-1">${p.desc}</p>
+                                    <span class="text-xs font-bold text-roseBrand-600 block mt-0.5">${p.price} Bs</span>
+                                </div>
+                                <button onclick="addToCart(${p.id}); alert('¡${p.name} agregado al carrito!');" class="bg-roseBrand-500 hover:bg-roseBrand-600 text-white text-[10px] font-bold px-2 py-1.5 rounded-lg flex-shrink-0 transition-all">
+                                    + Carrito
+                                </button>
+                            </div>
+                        `;
+                        appendMessage('bot', cardHtml, true);
+                    });
+                }
+                else if (option === 'precios') {
+                    let pricesHtml = `<strong>Nuestros Precios de Catálogo:</strong><br><br><ul class="space-y-1.5 text-xs">`;
+                    products.forEach(p => {
+                        pricesHtml += `<li>🌸 <strong>${p.name}</strong> - <span class="text-roseBrand-600 font-bold">${p.price} Bs</span></li>`;
+                    });
+                    pricesHtml += `</ul><p class="mt-2 text-[11px] text-gray-500">¿Deseas agregar alguno? Simplemente menciónalo por su nombre.</p>`;
+                    appendMessage('bot', pricesHtml, true);
+                }
+                else if (option === 'consejos') {
+                    appendMessage('bot', `✨ <strong>Consejos Rápidos de Sofía:</strong><br><br>
+                        1. <strong>Preparación:</strong> Antes de aplicar la <em>Base de Maquillaje</em>, hidrata bien tu rostro y usa la <em>Esponja de Maquillaje</em> húmeda para un acabado impecable y de larga duración.<br><br>
+                        2. <strong>Mirada Radiante:</strong> Aplica el <em>Delineador Líquido</em> pegado al nacimiento de las pestañas superiores y luego sella con la <em>Máscara de Pestañas</em> para una mirada cautivadora.<br><br>
+                        3. <strong>Labios de Seda:</strong> Exfolia tus labios una vez por semana y aplica nuestro <em>Bálsamo Labial</em> todos los días antes de dormir para mantenerlos suaves y sanos.`, true);
+                }
+                else if (option === 'contacto') {
+                    appendMessage('bot', `✨ ¡Claro que sí! Si deseas atención directa de nuestro personal, puedes escribir directamente a nuestro número oficial de WhatsApp de Brillo de Mujer:<br><br>
+                        👉 <a href="https://wa.me/59163494328" target="_blank" class="text-green-600 font-bold underline hover:text-green-700">Chatear en WhatsApp (+591 63494328)</a>`, true);
+                }
+            });
+        }
+
+        chatbotForm.onsubmit = (e) => {
+            e.preventDefault();
+            const text = chatbotInput.value.trim();
+            if (!text) return;
+
+            appendMessage('user', text);
+            chatbotInput.value = "";
+
+            showTypingAndRespond(() => {
+                const query = text.toLowerCase();
+
+                // Greeting matching
+                if (query.match(/(hola|buenos dias|buenas tardes|buenas noches|saludos|hello)/)) {
+                    appendMessage('bot', `¡Hola! Qué gusto saludarte. Soy Sofía. ¿Qué tal va tu día? ¿Te gustaría ver recomendaciones, consultar precios o necesitas algún consejo de maquillaje hoy? ✨`);
+                    return;
+                }
+
+                // Thank you
+                if (query.match(/(gracias|agradecido|excelente|perfecto|ok|super)/)) {
+                    appendMessage('bot', `¡Con muchísimo gusto! Es un placer ayudarte a brillar. Si necesitas algo más, solo dime. 💕`);
+                    return;
+                }
+
+                // Cart / Order related
+                if (query.match(/(carrito|comprar|pedido|pago|whatsapp|compro)/)) {
+                    appendMessage('bot', `Para realizar tu pedido, simplemente presiona el botón <strong>"Agregar al Carrito"</strong> en los cosméticos que te encanten. Luego, abre el carrito 🛒 arriba a la derecha y haz clic en <strong>"Finalizar Pedido por WhatsApp"</strong>. ¡Es súper sencillo!`, true);
+                    return;
+                }
+
+                // Precios
+                if (query.match(/(precio|costo|cuanto cuesta|cuanto valen|precios)/)) {
+                    let pricesHtml = `<strong>Aquí tienes nuestra lista de precios actual:</strong><br><br><ul class="space-y-1">`;
+                    products.forEach(p => {
+                        pricesHtml += `<li>💄 <strong>${p.name}</strong>: ${p.price} Bs</li>`;
+                    });
+                    pricesHtml += `</ul><p class="mt-2 text-[11px] text-gray-500">¿Cuál te gustaría llevar hoy?</p>`;
+                    appendMessage('bot', pricesHtml, true);
+                    return;
+                }
+
+                // Check matches for specific products
+                let matchedProduct = null;
+                if (query.match(/(balsamo|bálsamo|labial|labios|boca)/)) {
+                    matchedProduct = products[0];
+                } else if (query.match(/(base|rostro|cara|maquillaje rostro)/)) {
+                    matchedProduct = products[1];
+                } else if (query.match(/(mascara|máscara|pestaña|rimel|rímel|pestana)/)) {
+                    matchedProduct = products[2];
+                } else if (query.match(/(paleta|sombras|sombra|colores|ojos sombras)/)) {
+                    matchedProduct = products[3];
+                } else if (query.match(/(esponja|esponjita|blender)/)) {
+                    matchedProduct = products[4];
+                } else if (query.match(/(delineador|linea|delineado)/)) {
+                    matchedProduct = products[5];
+                }
+
+                if (matchedProduct) {
+                    appendMessage('bot', `¡Excelente elección! Aquí tienes los detalles del producto que consultaste:<br><br>
+                        🌸 <strong>${matchedProduct.name}</strong> (${matchedProduct.category})<br>
+                        📌 <em>${matchedProduct.badge}</em><br>
+                        📝 ${matchedProduct.desc}<br><br>
+                        💵 <strong>Precio:</strong> ${matchedProduct.price} Bs<br><br>
+                        Puedes añadirlo directamente a tu carrito desde aquí:`, true);
+
+                    const inlineBtnHtml = `
+                        <div class="bg-gray-50 p-2.5 rounded-xl border border-roseBrand-200 flex justify-between items-center max-w-sm">
+                            <span class="text-xs font-bold text-gray-800">${matchedProduct.name}</span>
+                            <button onclick="addToCart(${matchedProduct.id}); alert('¡${matchedProduct.name} agregado al carrito!');" class="bg-roseBrand-500 hover:bg-roseBrand-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition-all">
+                                🛒 Añadir por ${matchedProduct.price} Bs
+                            </button>
+                        </div>
+                    `;
+                    appendMessage('bot', inlineBtnHtml, true);
+                } else {
+                    // Fallback
+                    appendMessage('bot', `Disculpa, no logré entender la consulta exacta sobre ese producto o tema. 🌸<br><br>
+                        ¿Te gustaría alguna de las siguientes opciones? Puedes hacer clic abajo o volver a preguntar especificando un producto (como 'base', 'bálsamo' o 'delineador').`, true);
+
+                    // Show options again
+                    const optionsAgain = `
+                        <div class="grid grid-cols-1 gap-1.5 mt-2 max-w-xs">
+                            <button onclick="handleQuickOption('recomendaciones')" class="text-left text-[11px] bg-roseBrand-50 text-roseBrand-700 px-3 py-2 rounded-lg font-semibold hover:bg-roseBrand-100 transition-colors">💄 Ver todo el catálogo</button>
+                            <button onclick="handleQuickOption('precios')" class="text-left text-[11px] bg-roseBrand-50 text-roseBrand-700 px-3 py-2 rounded-lg font-semibold hover:bg-roseBrand-100 transition-colors">💰 Lista completa de precios</button>
+                            <button onclick="handleQuickOption('contacto')" class="text-left text-[11px] bg-roseBrand-50 text-roseBrand-700 px-3 py-2 rounded-lg font-semibold hover:bg-roseBrand-100 transition-colors">📲 Hablar con un humano por WhatsApp</button>
+                        </div>
+                    `;
+                    appendMessage('bot', optionsAgain, true);
+                }
+            });
+        };
+
+        // Render catalog on startup
         renderProducts();
     </script>
 </body>
