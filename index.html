@@ -52,12 +52,12 @@
 
     <script>
         const products = [
-            { id: 1, name: "Labial Mate", price: 10 },
-            { id: 2, name: "Base de Maquillaje", price: 45 },
-            { id: 3, name: "Máscara de Pestañas", price: 25 },
-            { id: 4, name: "Paleta de Sombras", price: 60 },
-            { id: 5, name: "Rubor en Polvo", price: 30 },
-            { id: 6, name: "Delineador Líquido", price: 20 }
+            { id: 1, name: "Bálsamo Labial", price: 10, image: "images/balzamo.jpg" },
+            { id: 2, name: "Base de Maquillaje", price: 45, image: "images/base.jpg" },
+            { id: 3, name: "Máscara de Pestañas", price: 25, image: "images/lash.jpg" },
+            { id: 4, name: "Paleta de Sombras", price: 60, image: "images/cosmetico.jpg" },
+            { id: 5, name: "Esponja de Maquillaje", price: 30, image: "images/esponja.jpg" },
+            { id: 6, name: "Delineador Líquido", price: 20, image: "images/cosmeti.jpg" }
         ];
 
         let cart = [];
@@ -70,10 +70,15 @@
 
         function renderProducts() {
             productGrid.innerHTML = products.map(p => `
-                <div class="bg-white p-6 rounded-2xl shadow-md border hover:shadow-lg transition-shadow text-center">
-                    <h3 class="text-xl font-bold text-gray-800">${p.name}</h3>
-                    <p class="text-2xl font-bold text-rose-brand my-4">${p.price} Bs</p>
-                    <button onclick="addToCart(${p.id})" class="w-full bg-rose-500 text-white py-2 rounded-lg hover:bg-rose-600">Agregar al Carrito</button>
+                <div class="bg-white p-6 rounded-2xl shadow-md border hover:shadow-lg transition-shadow text-center flex flex-col justify-between">
+                    <div>
+                        <div class="w-full aspect-square mb-4 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">${p.name}</h3>
+                        <p class="text-2xl font-bold text-rose-brand my-4">${p.price} Bs</p>
+                    </div>
+                    <button onclick="addToCart(${p.id})" class="w-full bg-rose-500 text-white py-2 rounded-lg hover:bg-rose-600 mt-auto">Agregar al Carrito</button>
                 </div>
             `).join('');
         }
