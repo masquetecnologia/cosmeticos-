@@ -72,6 +72,23 @@
 </head>
 <body class="bg-gray-50 font-poppins text-gray-800 selection:bg-roseBrand-100 selection:text-roseBrand-800">
 
+    <!-- Top Promo / Business Info Bar -->
+    <div class="bg-gradient-to-r from-roseBrand-600 via-roseBrand-500 to-roseBrand-600 text-white text-xs py-2 px-4 shadow-sm relative z-50">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center">
+            <div class="flex items-center gap-1.5 font-medium justify-center">
+                <span>✨</span>
+                <strong>Brillo de Mujer</strong> — Cosméticos de excelente calidad para el cuidado y belleza del rostro.
+            </div>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 justify-center text-[11px] font-semibold">
+                <span class="flex items-center gap-1">📍 Santa Cruz, Bolivia</span>
+                <span class="flex items-center gap-1">💰 Precios desde 10 Bs</span>
+                <a href="https://wa.me/59163494328" target="_blank" class="hover:underline flex items-center gap-1 text-roseBrand-100">
+                    📱 WhatsApp: 63494328
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header Navigation -->
     <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-roseBrand-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -158,6 +175,12 @@
         </div>
 
         <div class="border-t border-gray-100 pt-6 mt-6">
+            <!-- Barrio/Zona delivery specification input -->
+            <div class="mb-4">
+                <label for="userLocation" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">📍 Barrio o Zona (Santa Cruz):</label>
+                <input type="text" id="userLocation" placeholder="Ej: Barrio Equipetrol, UV 12" class="w-full text-xs border border-gray-200 focus:border-roseBrand-400 focus:ring-1 focus:ring-roseBrand-400 rounded-xl px-4 py-3 outline-none transition-all">
+            </div>
+
             <div class="flex justify-between items-center mb-4">
                 <span class="text-gray-500 font-medium">Subtotal</span>
                 <span class="text-lg font-bold text-gray-800"><span id="cartSubtotal">0</span> Bs</span>
@@ -318,7 +341,8 @@
                 image: "images/balzamo.jpg",
                 category: "Labios",
                 badge: "Básico ✨",
-                desc: "Hidratación profunda con un toque de brillo natural y aroma frutal para unos labios irresistibles todo el día."
+                desc: "Hidratación profunda con un toque de brillo natural y aroma frutal para unos labios irresistibles todo el día.",
+                emoji: "💄"
             },
             {
                 id: 2,
@@ -327,7 +351,8 @@
                 image: "images/base.jpg",
                 category: "Rostro",
                 badge: "Más Vendido 🔥",
-                desc: "Fórmula ligera de alta cobertura con acabado mate sedoso. Se adapta perfectamente a tu tono de piel."
+                desc: "Fórmula ligera de alta cobertura con acabado mate sedoso. Se adapta perfectamente a tu tono de piel.",
+                emoji: "✨"
             },
             {
                 id: 3,
@@ -336,7 +361,8 @@
                 image: "images/lash.jpg",
                 category: "Ojos",
                 badge: "Mirada Impactante 💕",
-                desc: "Volumen extremo y definición de impacto. Resistente al agua para una mirada cautivadora y duradera."
+                desc: "Volumen extremo y definición de impacto. Resistente al agua para una mirada cautivadora y duradera.",
+                emoji: "👁️"
             },
             {
                 id: 4,
@@ -345,7 +371,8 @@
                 image: "images/cosmetico.jpg",
                 category: "Ojos",
                 badge: "Tendencia 🌟",
-                desc: "Colección exclusiva de 12 tonos altamente pigmentados, desde mates aterciopelados hasta shimmers radiantes."
+                desc: "Colección exclusiva de 12 tonos altamente pigmentados, desde mates aterciopelados hasta shimmers radiantes.",
+                emoji: "🎨"
             },
             {
                 id: 5,
@@ -354,7 +381,8 @@
                 image: "images/esponja.jpg",
                 category: "Accesorios",
                 badge: "Calidad Premium ⭐",
-                desc: "Textura ultrasuave libre de látex. Difumina bases y correctores a la perfección para un acabado profesional."
+                desc: "Textura ultrasuave libre de látex. Difumina bases y correctores a la perfección para un acabado profesional.",
+                emoji: "🧽"
             },
             {
                 id: 6,
@@ -363,7 +391,38 @@
                 image: "images/cosmeti.jpg",
                 category: "Ojos",
                 badge: "Favorito 😍",
-                desc: "Trazo ultra preciso y color negro ultra mate de secado rápido. Punta fina ideal para el delineado perfecto."
+                desc: "Trazo ultra preciso y color negro ultra mate de secado rápido. Punta fina ideal para el delineado perfecto.",
+                emoji: "🖋️"
+            },
+            {
+                id: 7,
+                name: "Polvo Compacto",
+                price: 35,
+                image: "images/base.jpg",
+                category: "Rostro",
+                badge: "Piel de Seda ✨",
+                desc: "Sella tu maquillaje y controla el brillo indeseado con este polvo de acabado aterciopelado.",
+                emoji: "✨"
+            },
+            {
+                id: 8,
+                name: "Crema Hidratante Facial",
+                price: 40,
+                image: "images/balzamo.jpg",
+                category: "Rostro",
+                badge: "Cuidado Rostro 💧",
+                desc: "Nutre y protege tu rostro diariamente. Textura ligera de rápida absorción para una piel luminosa y sana.",
+                emoji: "🧴"
+            },
+            {
+                id: 9,
+                name: "Labial Mate Larga Duración",
+                price: 15,
+                image: "images/cosmeti.jpg",
+                category: "Labios",
+                badge: "Labiales 💄",
+                desc: "Color vibrante e intransferible. Fórmula hidratante de larga duración para unos labios perfectos.",
+                emoji: "💄"
             }
         ];
 
@@ -407,9 +466,12 @@
                     </div>
 
                     <!-- Elegant CTA Button -->
-                    <div class="px-6 pb-6 pt-0">
-                        <button onclick="addToCart(${p.id})" class="w-full bg-roseBrand-500 hover:bg-roseBrand-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-roseBrand-200 flex items-center justify-center gap-2 transform active:scale-[0.98]">
+                    <div class="px-6 pb-6 pt-0 flex flex-col gap-2">
+                        <button onclick="addToCart(${p.id})" class="w-full bg-roseBrand-500 hover:bg-roseBrand-600 text-white font-bold py-2.5 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-roseBrand-200 flex items-center justify-center gap-2 transform active:scale-[0.98] text-xs">
                             <span>🛒</span> Agregar al Carrito
+                        </button>
+                        <button onclick="buyNowDirect(${p.id})" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2 transform active:scale-[0.98] text-xs">
+                            <span>💄</span> Comprar Ya por WhatsApp
                         </button>
                     </div>
                 </div>
@@ -498,17 +560,38 @@
         document.getElementById('openCart').onclick = openCartDrawer;
         document.getElementById('closeCart').onclick = closeCartDrawer;
 
+        function buyNowDirect(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+            const emoji = product.emoji || "💄";
+            // Exact format requested: “Hola, quiero comprar un labial 💄” or relevant product
+            const text = `Hola, quiero comprar un ${product.name.toLowerCase()} ${emoji}`;
+            const message = encodeURIComponent(text);
+            window.open(`https://wa.me/59163494328?text=${message}`, '_blank');
+        }
+
         document.getElementById('checkoutBtn').onclick = () => {
             if(cart.length === 0) {
                 alert("Tu pedido está vacío. ¡Elige algunos de nuestros hermosos cosméticos primero!");
                 return;
             }
+            const locationInput = document.getElementById('userLocation');
+            const location = locationInput ? locationInput.value.trim() : '';
+
             let message = "Hola, me gustaría realizar un pedido de Brillo de Mujer:%0A%0A";
             cart.forEach(p => {
                 message += `👉 *${p.name}* (Cant: ${p.qty}) - Subtotal: ${p.price * p.qty} Bs%0A`;
             });
             const finalTotal = cart.reduce((sum, p) => sum + (p.price * p.qty), 0);
-            message += `%0A💵 *Total del Pedido:* ${finalTotal} Bs%0A%0A¡Muchas gracias! ✨`;
+            message += `%0A💵 *Total del Pedido:* ${finalTotal} Bs`;
+
+            if (location) {
+                message += `%0A📍 *Barrio / Zona:* ${location}`;
+            } else {
+                message += `%0A📍 *Ubicación:* Santa Cruz, Bolivia`;
+            }
+
+            message += `%0A%0A¡Muchas gracias! ✨`;
             window.open(`https://wa.me/59163494328?text=${message}`, '_blank');
         };
 
