@@ -110,6 +110,9 @@
             <p class="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mt-4 font-light leading-relaxed">
                 Nuestra colección premium de maquillaje está especialmente seleccionada para destacar tu elegancia, brindándote frescura, durabilidad y ese brillo radiante único que te caracteriza.
             </p>
+            <p class="text-roseBrand-600 text-sm font-semibold mt-3">
+                Precios accesibles desde <span class="font-bold underline text-roseBrand-800">10 Bs en adelante</span>. Productos de buena calidad para el cuidado y belleza del rostro.
+            </p>
             <div class="flex justify-center gap-3 mt-8">
                 <span class="h-1 w-12 bg-roseBrand-300 rounded-full"></span>
                 <span class="h-1 w-3 bg-roseBrand-500 rounded-full"></span>
@@ -127,11 +130,12 @@
             </div>
 
             <!-- Category badges dynamic selector wrapper -->
-            <div class="flex flex-wrap gap-2 text-xs">
-                <button class="px-4 py-2 rounded-full bg-roseBrand-500 text-white font-semibold shadow-sm">Todos los Cosméticos</button>
-                <span class="px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-colors cursor-pointer">Rostro</span>
-                <span class="px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-colors cursor-pointer">Ojos</span>
-                <span class="px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-colors cursor-pointer">Labios</span>
+            <div id="categoryFilter" class="flex flex-wrap gap-2 text-xs">
+                <button onclick="filterCategory('all')" class="category-btn px-4 py-2 rounded-full bg-roseBrand-500 text-white font-semibold shadow-sm transition-all duration-300">Todos los Cosméticos</button>
+                <button onclick="filterCategory('Rostro')" class="category-btn px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-all duration-300">Rostro</button>
+                <button onclick="filterCategory('Ojos')" class="category-btn px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-all duration-300">Ojos</button>
+                <button onclick="filterCategory('Labios')" class="category-btn px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-all duration-300">Labios</button>
+                <button onclick="filterCategory('Accesorios')" class="category-btn px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 hover:border-roseBrand-300 hover:text-roseBrand-600 transition-all duration-300">Accesorios</button>
             </div>
         </div>
 
@@ -272,6 +276,32 @@
 
     </div>
 
+    <!-- Location & Contact Section -->
+    <section class="bg-roseBrand-50/50 py-12 border-t border-roseBrand-100">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h3 class="text-2xl font-bold font-playfair text-gray-900 mb-4">📍 ¿Dónde encontrarnos y cómo comprar?</h3>
+            <p class="text-gray-600 text-sm max-w-xl mx-auto mb-6">
+                Estamos ubicados en <strong class="text-gray-800">Santa Cruz, Bolivia 📍</strong>. Ofrecemos los mejores cosméticos con precios accesibles desde 10 Bs en adelante.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="https://wa.me/59163494328" target="_blank" class="flex items-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-sm border border-roseBrand-100 hover:border-roseBrand-300 transition-all transform hover:-translate-y-0.5">
+                    <span class="text-2xl">📱</span>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400 font-medium">WhatsApp Oficial</p>
+                        <p class="text-sm font-bold text-roseBrand-600">63494328</p>
+                    </div>
+                </a>
+                <a href="https://wa.me/59163494328" target="_blank" class="flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-2xl shadow-md transition-all transform hover:-translate-y-0.5">
+                    <span class="text-2xl">👉</span>
+                    <div class="text-left">
+                        <p class="text-xs text-green-100 font-medium">Haz tu pedido directo</p>
+                        <p class="text-sm font-black">wa.me/59163494328</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Elegant Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12 px-6 border-t border-gray-800">
         <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -364,6 +394,24 @@
                 category: "Ojos",
                 badge: "Favorito 😍",
                 desc: "Trazo ultra preciso y color negro ultra mate de secado rápido. Punta fina ideal para el delineado perfecto."
+            },
+            {
+                id: 7,
+                name: "Polvo Compacto Mate",
+                price: 35,
+                image: "images/cosmetico.jpg",
+                category: "Rostro",
+                badge: "Piel Perfecta ✨",
+                desc: "Sella tu maquillaje y elimina el brillo con nuestro polvo compacto de textura ultra fina y acabado seda de alta calidad."
+            },
+            {
+                id: 8,
+                name: "Crema Hidratante Facial",
+                price: 40,
+                image: "images/cosmeti.jpg",
+                category: "Rostro",
+                badge: "Cuidado Facial 💧",
+                desc: "Nutrición intensa con ácido hialurónico para preparar tu rostro y lucir un cutis radiante y saludable."
             }
         ];
 
@@ -376,9 +424,15 @@
         const cartCount = document.getElementById('cartCount');
         const cartDrawer = document.getElementById('cartDrawer');
 
+        let selectedCategory = 'all';
+
         // Dynamic product catalog rendering with upgraded design & letters
         function renderProducts() {
-            productGrid.innerHTML = products.map(p => `
+            const filtered = selectedCategory === 'all'
+                ? products
+                : products.filter(p => p.category === selectedCategory);
+
+            productGrid.innerHTML = filtered.map(p => `
                 <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 hover:border-roseBrand-200 transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1 relative">
 
                     <!-- Floating Badge -->
@@ -414,6 +468,27 @@
                     </div>
                 </div>
             `).join('');
+        }
+
+        function filterCategory(category) {
+            selectedCategory = category;
+
+            // Update button styles to reflect selection
+            const buttons = document.querySelectorAll('#categoryFilter .category-btn');
+            buttons.forEach(btn => {
+                if (
+                    (category === 'all' && btn.innerText.includes('Todos')) ||
+                    btn.innerText.toLowerCase() === category.toLowerCase()
+                ) {
+                    btn.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+                    btn.classList.add('bg-roseBrand-500', 'text-white', 'font-semibold', 'shadow-sm');
+                } else {
+                    btn.classList.remove('bg-roseBrand-500', 'text-white', 'font-semibold', 'shadow-sm');
+                    btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+                }
+            });
+
+            renderProducts();
         }
 
         function addToCart(id) {
@@ -503,12 +578,12 @@
                 alert("Tu pedido está vacío. ¡Elige algunos de nuestros hermosos cosméticos primero!");
                 return;
             }
-            let message = "Hola, me gustaría realizar un pedido de Brillo de Mujer:%0A%0A";
+            let message = "Hola, quiero comprar un labial 💄 y otros hermosos productos de Brillo de Mujer ✨:%0A%0A";
             cart.forEach(p => {
                 message += `👉 *${p.name}* (Cant: ${p.qty}) - Subtotal: ${p.price * p.qty} Bs%0A`;
             });
             const finalTotal = cart.reduce((sum, p) => sum + (p.price * p.qty), 0);
-            message += `%0A💵 *Total del Pedido:* ${finalTotal} Bs%0A%0A¡Muchas gracias! ✨`;
+            message += `%0A💵 *Total del Pedido:* ${finalTotal} Bs%0A%0A📍 Santa Cruz, Bolivia%0A👉 Enlace de contacto: wa.me/59163494328%0A%0A¡Muchas gracias! ✨`;
             window.open(`https://wa.me/59163494328?text=${message}`, '_blank');
         };
 
@@ -687,7 +762,7 @@
                 let matchedProduct = null;
                 if (query.match(/(balsamo|bálsamo|labial|labios|boca)/)) {
                     matchedProduct = products[0];
-                } else if (query.match(/(base|rostro|cara|maquillaje rostro)/)) {
+                } else if (query.match(/(base|maquillaje rostro)/)) {
                     matchedProduct = products[1];
                 } else if (query.match(/(mascara|máscara|pestaña|rimel|rímel|pestana)/)) {
                     matchedProduct = products[2];
@@ -697,6 +772,10 @@
                     matchedProduct = products[4];
                 } else if (query.match(/(delineador|linea|delineado)/)) {
                     matchedProduct = products[5];
+                } else if (query.match(/(polvo|polvos|compacto)/)) {
+                    matchedProduct = products[6];
+                } else if (query.match(/(crema|cremas|hidratante)/)) {
+                    matchedProduct = products[7];
                 }
 
                 if (matchedProduct) {
