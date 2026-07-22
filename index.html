@@ -234,10 +234,7 @@
                     </div>
                     <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-roseBrand-100 max-w-[85%]">
                         <p class="text-xs text-gray-800 leading-relaxed">
-                            ¡Hola, hermosa! 💕 Soy <strong>Sofía</strong>, tu asistente de belleza. Me alegra mucho saludarte.
-                        </p>
-                        <p class="text-xs text-gray-800 leading-relaxed mt-1.5">
-                            ¿Cómo puedo ayudarte a brillar hoy? Selecciona una de mis opciones rápidas o escríbeme lo que estás buscando.
+                            ¡Hola, hermosa! 💕 Soy <strong>Sofía</strong>, tu asistente. ¿Cómo puedo ayudarte a brillar hoy? Selecciona una opción rápida o escríbeme lo que buscas. ✨
                         </p>
                     </div>
                 </div>
@@ -685,7 +682,7 @@
 
             showTypingAndRespond(() => {
                 if (option === 'recomendaciones') {
-                    appendMessage('bot', `Contamos con una exquisita selección de cosméticos. Aquí tienes los más destacados. ¡Puedes agregarlos al carrito directamente desde aquí! 👇`, true);
+                    appendMessage('bot', `¡Aquí tienes nuestros mejores cosméticos! Elige el tuyo y agrégalo directamente al carrito: 👇`, true);
 
                     // Output products cards in chat
                     products.forEach(p => {
@@ -706,22 +703,14 @@
                     });
                 }
                 else if (option === 'precios') {
-                    let pricesHtml = `<strong>Nuestros Precios de Catálogo:</strong><br><br><ul class="space-y-1.5 text-xs">`;
-                    products.forEach(p => {
-                        pricesHtml += `<li>🌸 <strong>${p.name}</strong> - <span class="text-roseBrand-600 font-bold">${p.price} Bs</span></li>`;
-                    });
-                    pricesHtml += `</ul><p class="mt-2 text-[11px] text-gray-500">¿Deseas agregar alguno? Simplemente menciónalo por su nombre.</p>`;
+                    let pricesHtml = `Precios de catálogo: Bálsamo 10Bs, Labial 15Bs, Delineador 20Bs, Rímel 25Bs, Esponja 30Bs, Polvo 35Bs, Crema 40Bs, Base 45Bs, Paleta 60Bs. ¿Cuál agregamos?`;
                     appendMessage('bot', pricesHtml, true);
                 }
                 else if (option === 'consejos') {
-                    appendMessage('bot', `✨ <strong>Consejos Rápidos de Sofía:</strong><br><br>
-                        1. <strong>Preparación:</strong> Antes de aplicar la <em>Base de Maquillaje</em>, hidrata bien tu rostro y usa la <em>Esponja de Maquillaje</em> húmeda para un acabado impecable y de larga duración.<br><br>
-                        2. <strong>Mirada Radiante:</strong> Aplica el <em>Delineador Líquido</em> pegado al nacimiento de las pestañas superiores y luego sella con la <em>Máscara de Pestañas</em> para una mirada cautivadora.<br><br>
-                        3. <strong>Labios de Seda:</strong> Exfolia tus labios una vez por semana y aplica nuestro <em>Bálsamo Labial</em> todos los días antes de dormir para mantenerlos suaves y sanos.`, true);
+                    appendMessage('bot', `1. Humedece tu esponja de maquillaje para bases. 2. Usa delineador antes de rímel. 3. Aplica bálsamo labial diariamente. ¡Lucirás espectacular! ✨`, true);
                 }
                 else if (option === 'contacto') {
-                    appendMessage('bot', `✨ ¡Claro que sí! Si deseas atención directa de nuestro personal, puedes escribir directamente a nuestro número oficial de WhatsApp de Brillo de Mujer:<br><br>
-                        👉 <a href="https://wa.me/59163494328" target="_blank" class="text-green-600 font-bold underline hover:text-green-700">Chatear en WhatsApp (+591 63494328)</a>`, true);
+                    appendMessage('bot', `¡Escríbenos directamente a WhatsApp para chatear con un asesor y coordinar tu entrega! 👉 <a href="https://wa.me/59163494328" target="_blank" class="text-green-600 font-bold underline hover:text-green-700">WhatsApp (63494328)</a>`, true);
                 }
             });
         }
@@ -751,17 +740,13 @@
 
                 // Cart / Order related
                 if (query.match(/(carrito|comprar|pedido|pago|whatsapp|compro)/)) {
-                    appendMessage('bot', `Para realizar tu pedido, simplemente presiona el botón <strong>"Agregar al Carrito"</strong> en los cosméticos que te encanten. Luego, abre el carrito 🛒 arriba a la derecha y haz clic en <strong>"Finalizar Pedido por WhatsApp"</strong>. ¡Es súper sencillo!`, true);
+                    appendMessage('bot', `¡Es muy fácil! Agrega productos al carrito 🛒 (arriba a la derecha), ingresa tu barrio y haz clic en 'Finalizar Pedido por WhatsApp' para coordinar.`, true);
                     return;
                 }
 
                 // Precios
                 if (query.match(/(precio|costo|cuanto cuesta|cuanto valen|precios)/)) {
-                    let pricesHtml = `<strong>Aquí tienes nuestra lista de precios actual:</strong><br><br><ul class="space-y-1">`;
-                    products.forEach(p => {
-                        pricesHtml += `<li>💄 <strong>${p.name}</strong>: ${p.price} Bs</li>`;
-                    });
-                    pricesHtml += `</ul><p class="mt-2 text-[11px] text-gray-500">¿Cuál te gustaría llevar hoy?</p>`;
+                    let pricesHtml = `Precios de catálogo: Bálsamo 10Bs, Labial 15Bs, Delineador 20Bs, Rímel 25Bs, Esponja 30Bs, Polvo 35Bs, Crema 40Bs, Base 45Bs, Paleta 60Bs. ¿Cuál agregamos?`;
                     appendMessage('bot', pricesHtml, true);
                     return;
                 }
@@ -783,12 +768,7 @@
                 }
 
                 if (matchedProduct) {
-                    appendMessage('bot', `¡Excelente elección! Aquí tienes los detalles del producto que consultaste:<br><br>
-                        🌸 <strong>${matchedProduct.name}</strong> (${matchedProduct.category})<br>
-                        📌 <em>${matchedProduct.badge}</em><br>
-                        📝 ${matchedProduct.desc}<br><br>
-                        💵 <strong>Precio:</strong> ${matchedProduct.price} Bs<br><br>
-                        Puedes añadirlo directamente a tu carrito desde aquí:`, true);
+                    appendMessage('bot', `🌸 <strong>${matchedProduct.name}</strong>: ${matchedProduct.desc} 💵 <strong>Precio:</strong> ${matchedProduct.price} Bs. ¿Deseas añadirlo a tu pedido?`, true);
 
                     const inlineBtnHtml = `
                         <div class="bg-gray-50 p-2.5 rounded-xl border border-roseBrand-200 flex justify-between items-center max-w-sm">
@@ -801,8 +781,7 @@
                     appendMessage('bot', inlineBtnHtml, true);
                 } else {
                     // Fallback
-                    appendMessage('bot', `Disculpa, no logré entender la consulta exacta sobre ese producto o tema. 🌸<br><br>
-                        ¿Te gustaría alguna de las siguientes opciones? Puedes hacer clic abajo o volver a preguntar especificando un producto (como 'base', 'bálsamo' o 'delineador').`, true);
+                    appendMessage('bot', `Disculpa, no logré entender la consulta exacta. 🌸 Escríbeme un producto (como 'base', 'bálsamo' o 'delineador') o elige una opción rápida:`, true);
 
                     // Show options again
                     const optionsAgain = `
